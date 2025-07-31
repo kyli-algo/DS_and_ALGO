@@ -47,6 +47,22 @@ void print_list() {
     cout << endl;
 }
 
+// Insert x after the pos-th position (0-based, after head is pos=0)
+void insert_after_pos(int pos, int x) {
+    if (pos == -1) {
+        // Insert before head (become new head)
+        insert_to_head(x);
+    } else {
+        int cur = head;
+        for (int i = 0; i < pos && cur != -1; i++) {
+            cur = next_idx[cur];
+        }
+        if (cur != -1) {
+            insert_after(cur, x);
+        }
+    }
+}
+
 int main() {
     int n, value;
     cout << "Enter number of elements to insert: ";
